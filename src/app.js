@@ -9,12 +9,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Rotas da API entram aqui (próxima etapa)
-// app.use('/api', require('./routes'));
+const authRoutes = require('./routes/authRoutes');
+app.use('/api', authRoutes);
 
+/*/ Rota temporária só para testar a conexão
 const pool = require('./config/postgres');
 
-// Rota temporária só para testar a conexão
 app.get('/api/test-db', async (req, res) => {
   try {
     const result = await pool.query('SELECT NOW()');
@@ -24,7 +24,7 @@ app.get('/api/test-db', async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
-// Fim teste
+/*/
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

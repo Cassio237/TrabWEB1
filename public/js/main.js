@@ -48,8 +48,8 @@ loginForm.addEventListener('submit', async (event) => {
       return;
     }
 
-    // Login OK: redirecionar ou seguir o fluxo definido no back-end
-    console.log('Login realizado:', data);
+    // Login OK: redirecionar para a página pós-login teste
+    window.location.href = '/dashboard.html';
 
   } catch (err) {
     loginError.textContent = 'Erro ao conectar com o servidor.';
